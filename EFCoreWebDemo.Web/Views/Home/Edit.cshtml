@@ -1,0 +1,14 @@
+﻿@model EditPageViewModel
+
+<div class="row">
+    <div class="col-md-6 offset-md-3 jumbotron">
+        <h2>Edit Person</h2>
+        <form action="/home/update" method="POST">
+            <input value="@Model.Person.FirstName" type="text" name="firstname" placeholder="First Name" class="form-control mt-2" />
+            <input value="@Model.Person.LastName" type="text" name="lastname" placeholder="Last Name" class="form-control mt-2" />
+            <input value="@Model.Person.Age" type="text" name="age" placeholder="Age" class="form-control mt-2" />
+            <input type="hidden" name="id" value="@Model.Person.Id" />
+            <button class="btn btn-danger btn-block mt-2">Update</button>
+        </form>
+    </div>
+</div>

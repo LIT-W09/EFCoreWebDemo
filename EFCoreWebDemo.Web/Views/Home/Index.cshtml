@@ -1,0 +1,42 @@
+﻿@using EFCoreWebDemo.Data
+@model HomePageViewModel
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <a href="/home/add" class="btn btn-primary btn-block">Add Person</a>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Person person in Model.People)
+                {
+                    <tr>
+                        <td>@person.FirstName</td>
+                        <td>@person.LastName</td>
+                        <td>@person.Age</td>
+                        <td>
+                            <form method="post" action="/home/delete">
+                                <input type="hidden" name="id" value="@person.Id" />
+                                <button class="btn btn-danger btn-block">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="/home/edit?id=@person.Id" class="btn btn-warning btn-block">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
